@@ -1,0 +1,27 @@
+# Project Documentation: Baseball Elimination - AI Assistance History
+
+## 1. The Problem I Was Stuck On
+I was struggling with the **Baseball Elimination problem**, a classic network flow challenge. While it's easy to see if a team is eliminated by another team's current wins, it's much harder to prove when they are eliminated by a **combination** of other teams' remaining games. I needed a way to use the **Max-Flow Min-Cut Theorem** to mathematically prove these non-trivial eliminations.
+
+## 2. The Overall AI Prompt Used
+"I need to implement a Python solution for the Baseball Elimination problem. I have the team data but I want to structure the code professionally across multiple files. Please help me build a system that can read team statistics and tell me which teams are mathematically eliminated and provide a 'certificate of elimination' (the subset of teams R) for each."
+
+## 3. Specific Prompt for `main.py`
+"Help me write the `main.py` entry point. This file should be responsible for reading the team data (wins, losses, remaining games, and the game matrix) from standard input. It needs to coordinate the logic between the data manager and the elimination checker to print a clear report for every team in the division."
+
+## 4. Specific Prompt for `flow_algorithms.py`
+"I am stuck on the non-trivial elimination logic and need an implementation of the **Edmonds-Karp** Max-Flow algorithm. Please help me create a file called `flow_algorithms.py` that uses Breadth-First Search (BFS) to find augmenting paths in a flow network. This will be the core engine for calculating mathematical elimination."
+
+---
+## 5. Modular Architecture & Design
+The project is designed with a **Separation of Concerns** in mind. By splitting the logic into multiple files:
+*   We can test the **Max-Flow engine** independently from the baseball logic.
+*   Data management is encapsulated in `team_manager.py`, making it easy to swap input formats in the future.
+*   The `elimination_checker.py` handles the core "business rules" (trivial vs. non-trivial checks), keeping `main.py` clean.
+
+## 6. Key Techniques Summary
+*   **Edmonds-Karp (Max-Flow)**: We use this because it's reliable and handles even the most complex edge cases where many teams have many games left.
+*   **Min-Cut (Certificate of Elimination)**: This is the "Aha!" moment of the project. If we can't push enough flow to the target, we find the "bottleneck" (Min-Cut), which identifies the exact subset of teams that make it impossible for our team to win.
+
+---
+**This documentation summarizes exactly how the project was developed and the specific technical challenges addressed using AI assistance.**
